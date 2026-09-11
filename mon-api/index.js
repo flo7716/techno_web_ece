@@ -36,4 +36,11 @@ app.get("/lien", (req, res) => {
     res.json({ message: "ça marche pour la route lien" })
 })
 
+app.get("/lien/:id", (req, res) => {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${req.params.id}`)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    res.json({ message: "ça marche pour la route lien et l'id est " + req.params.id })
+})
+
 app.listen(3000, () => console.log("http://localhost:3000"))
