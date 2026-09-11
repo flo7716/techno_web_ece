@@ -30,7 +30,7 @@ app.get("/name/:name/:age", (req, res) => {
 })
 
 app.get("/google", (req, res) => {
-    fetch("https://www.google.com")
+    const x = fetch("https://www.google.com")
     .then(response => response.text())
     .then(data => {
         res.send(data)
@@ -39,6 +39,7 @@ app.get("/google", (req, res) => {
         console.error(error)
         res.status(500).send("Erreur lors de la récupération de la page Google")
     })
+    console.log(x)
     })
 
 app.listen(3000, () => console.log("http://localhost:3000"))
