@@ -29,17 +29,11 @@ app.get("/name/:name/:age", (req, res) => {
     res.json({ message: 'ceci est la page de ' + req.params.name + ' et il a ' + req.params.age + ' ans' })
 })
 
-app.get("/google", (req, res) => {
-    const x = fetch("https://www.google.com")
-    .then(response => response.text())
-    .then(data => {
-        res.send(data)
-    })
-    .catch(error => {
-        console.error(error)
-        res.status(500).send("Erreur lors de la récupération de la page Google")
-    })
-    console.log(x)
-    })
+app.get("/lien", (req, res) => {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    res.json({ message: "ça marche pour la route lien" })
+})
 
 app.listen(3000, () => console.log("http://localhost:3000"))
