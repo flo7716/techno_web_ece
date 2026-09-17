@@ -4,7 +4,7 @@ const Title = () => {
 const [count, setCount] = useState(0);
 const [titre, setTitre] = useState("Hello, World!");
     return (
-        <div>
+        <div className="george">
         <h1>{titre}</h1>
         <p> Ceci est un composant React tout simple ! </p>
         <button onClick={() => setCount(count + 1)}>
