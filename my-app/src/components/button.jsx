@@ -2,12 +2,16 @@ import { useState } from 'react';
 
 const Title = () => {
 const [count, setCount] = useState(0);
+const [titre, setTitre] = useState("Hello, World!");
     return (
         <div>
-        <h1>Hello, World!</h1>
+        <h1>{titre}</h1>
         <p> Ceci est un composant React tout simple ! </p>
         <button onClick={() => setCount(count + 1)}>
             Cliquez-moi ! ({count})
+        </button>
+        <button onClick={() => setTitre("Bonjour, le monde!")}>
+            Change le titre !
         </button>
         </div>
     )
