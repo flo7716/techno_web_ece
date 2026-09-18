@@ -23,6 +23,7 @@ app.get("/name/:name", (req, res) => {
     res.json({ message: 'ceci est la page de ' + req.params.name })
 })
 
+<<<<<<< Updated upstream
 app.get("/name/:name/:age", (req, res) => {
     console.log(req.params.name)
     console.log(req.params.age)
@@ -42,5 +43,7 @@ app.get("/lien/:id", (req, res) => {
     .then(data => console.log(data))
     res.json({ message: "ça marche pour la route lien et l'id est " + req.params.id })
 })
+=======
+>>>>>>> Stashed changes
 
 app.listen(3000, () => console.log("http://localhost:3000"))
