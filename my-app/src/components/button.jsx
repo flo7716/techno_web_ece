@@ -1,17 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Title = () => {
-const [count, setCount] = useState(0);
-const [titre, setTitre] = useState("Hello, World!");
-const ApiCall = async (){
-        const response = await fetch("https://techno-web-ece.onrender.com/test/2")
-        const data = await response.json()
-        console.log(data)
-        setTitre(data.body)
-    }
+    const [count, setCount] = useState(0);
+    const [titre, setTitre] = useState("Chargement...");
+
+    const apiCall = async () => {
+        const response = await fetch("https://techno-web-ece.onrender.com/test/2");
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const data = await response.json();
+        setTitre(data.title);
+    };
+
     useEffect(() => {
-        ApiCall()
-    }, [])
+        apiCall().catch((error) => {
+            console.error(error);
+            setTitre("Impossible de récupérer le post");
+        });
+    }, []);
 
     return (
         <div className="george">
