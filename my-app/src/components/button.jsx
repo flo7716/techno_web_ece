@@ -3,6 +3,16 @@ import { useState } from 'react';
 const Title = () => {
 const [count, setCount] = useState(0);
 const [titre, setTitre] = useState("Hello, World!");
+const ApiCall = async (){
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts/1")
+        const data = await response.json()
+        console.log(data)
+        setTitre(data.body)
+    }
+    useEffect(() => {
+        ApiCall()
+    }, [])
+
     return (
         <div className="george">
         <h1>{titre}</h1>
