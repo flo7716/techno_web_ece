@@ -8,13 +8,15 @@ app.get("/", (req, res) => {
   res.json({ message: "ça marche" })
 })
 
-app.get("/test", (req, res) => {
-  res.json({ message: "ça marche pour la route test" })
-})
-
-app.get("/fetch", async (req, res) => {
+app.get("/test/:id", async (req, res) => {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1")
+    const { id } = req.params
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+    if (!response.ok) {
+      return res.status(response.status).json({ error: "Ressource introuvable" })
+    }
+
     const data = await response.json()
 
     res.json(data)
