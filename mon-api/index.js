@@ -1,7 +1,16 @@
 // index.js
 import express from "express"
 
+function cors(req,res,next){
+  res.set('Access-Control-Allow-Origin','*')
+  res.set('Access-Control-Allow-Methodes','*')
+  res.set('Access-Control-Allow-Headers','Content-Type, x-api-key')
+
+  next()
+}
+
 const app = express()
+app.use(cors)
 app.use(express.json())
 
 app.get("/", (req, res) => {
